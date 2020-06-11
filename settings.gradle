@@ -1,0 +1,2 @@
+rootProject.name='VideoEnglish_Android'
+include ':app'

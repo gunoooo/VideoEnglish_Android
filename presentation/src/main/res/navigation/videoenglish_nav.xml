@@ -2,4 +2,12 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/videoenglish_nav" app:startDestination="@id/homeFragment">
+    <fragment android:id="@+id/homeFragment" android:name="kr.hs.dgsw.videoenglish_android.ui.home.HomeFragment"
+        android:label="HomeFragment" />
+
+    <fragment android:id="@+id/wordbookFragment" android:name="kr.hs.dgsw.videoenglish_android.ui.wordbook.WordbookFragment"
+        android:label="WordbookFragment" />
+
+    <fragment android:id="@+id/lockerFragment" android:name="kr.hs.dgsw.videoenglish_android.ui.locker.LockerFragment"
+        android:label="LockerFragment" />
 </navigation>

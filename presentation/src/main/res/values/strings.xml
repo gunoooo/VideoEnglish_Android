@@ -1,9 +1,8 @@
 <resources>
     <string name="app_name">00 - 영상으로 배우는 영어</string>
 
-    <string name="menu_home">HOME</string>
-    <string name="menu_theme">테마별</string>
-    <string name="menu_search">검색</string>
+    <string name="menu_home">홈</string>
+    <string name="menu_wordbook">단어장</string>
     <string name="menu_favorites">보관함</string>
 
     <string name="menu_open_youtube">유튜브에서 열기</string>

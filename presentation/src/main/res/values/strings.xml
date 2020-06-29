@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">VideoEnglish_Android</string>
+    <string name="app_name">00 - 영상으로 배우는 영어</string>
+
+    <string name="menu_home">HOME</string>
+    <string name="menu_theme">테마별</string>
+    <string name="menu_search">검색</string>
+    <string name="menu_favorites">보관함</string>
+
+    <string name="menu_open_youtube">유튜브에서 열기</string>
+    <string name="menu_share">공유</string>
+    <string name="menu_hide">차단</string>
+    <string name="menu_add_favorites">즐겨찾기에 추가</string>
+    <string name="menu_delete_favorites">즐겨찾기에서 삭제</string>
+    <string name="menu_delete_hide">차단 목록에서 삭제</string>
+    <string name="menu_play">재생</string>
+    <string name="menu_delete">삭제</string>
+    <string name="menu_fix_title">제목 수정</string>
+
+    <string name="hint_search">검색어를 입력해주세요</string>
 </resources>

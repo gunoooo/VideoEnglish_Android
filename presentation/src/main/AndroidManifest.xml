@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="kr.hs.dgsw.videoenglish_android">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".widget.VideoEnglishApplication"
         android:allowBackup="true"
@@ -18,10 +20,12 @@
         <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ui.player.PlayerActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
     </application>
 
 </manifest>

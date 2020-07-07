@@ -14,7 +14,7 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary">
+            android:background="@drawable/background_bottom_line">
             <com.google.android.material.appbar.MaterialToolbar
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -23,8 +23,8 @@
                     android:layout_height="match_parent"
                     android:gravity="center_vertical">
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:src="@drawable/ic_logo" />
@@ -35,15 +35,15 @@
                         android:layout_weight="1" />
 
                     <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_marginEnd="15dp"
                         android:src="@drawable/ic_search"
                         android:tint="@color/colorWhite" />
 
                     <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_marginEnd="15dp"
                         android:src="@drawable/ic_settings"
                         android:tint="@color/colorWhite" />
@@ -64,7 +64,7 @@
             android:id="@+id/bottom_navigation_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/background_top_line"
             app:itemTextColor="@color/selector_navigation"
             app:itemIconTint="@color/selector_navigation"
             app:menu="@menu/menu_main"

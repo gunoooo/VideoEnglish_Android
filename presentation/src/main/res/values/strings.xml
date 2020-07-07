@@ -15,5 +15,10 @@
     <string name="menu_delete">삭제</string>
     <string name="menu_fix_title">제목 수정</string>
 
+    <string name="error_video_loading">영상 로딩중 오류가 발생하여 유튜브 플레이어를 통해 영상을 재생합니다\n템포, 음정 조절이 제한됩니다</string>
+
     <string name="hint_search">검색어를 입력해주세요</string>
+    <string name="hint_korean">의미</string>
+    <string name="hint_english">영단어</string>
+    <string name="content_add_word">단어장에 추가</string>
 </resources>

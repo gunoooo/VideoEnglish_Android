@@ -1,5 +1,7 @@
 package kr.hs.dgsw.videoenglish_android.base
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Build.VERSION
 import android.os.Build.VERSION_CODES
 import android.os.Bundle
@@ -25,6 +27,8 @@ abstract class BaseActivity<VB : ViewDataBinding, VM: BaseViewModel> : DaggerApp
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        window.statusBarColor = Color.BLACK
+        window.navigationBarColor = Color.BLACK
         window.decorView.systemUiVisibility = 0
 
         performDataBinding()

@@ -1,5 +1,7 @@
 package kr.hs.dgsw.videoenglish_android.ui.wordbook;
 
+import androidx.lifecycle.ViewModelProvider;
+
 import org.jetbrains.annotations.NotNull;
 
 import kr.hs.dgsw.videoenglish_android.base.BaseFragment;
@@ -10,7 +12,7 @@ public class WordbookFragment extends BaseFragment<FragmentWordbookBinding, Word
     @NotNull
     @Override
     protected WordbookViewModel getViewModel() {
-        return null;
+        return new ViewModelProvider(this).get(WordbookViewModel.class);
     }
 
     @Override

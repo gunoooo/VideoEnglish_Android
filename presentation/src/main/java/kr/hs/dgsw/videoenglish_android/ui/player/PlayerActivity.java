@@ -1,7 +1,9 @@
 package kr.hs.dgsw.videoenglish_android.ui.player;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -18,6 +20,7 @@ import javax.inject.Inject;
 
 import kr.co.prnd.YouTubePlayerView;
 import kr.hs.dgsw.domain.model.YoutubeData;
+import kr.hs.dgsw.videoenglish_android.R;
 import kr.hs.dgsw.videoenglish_android.base.BaseActivity;
 import kr.hs.dgsw.videoenglish_android.databinding.ActivityPlayerBinding;
 
@@ -36,8 +39,10 @@ public class PlayerActivity extends BaseActivity<ActivityPlayerBinding, PlayerVi
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     protected void observerViewModel() {
-
+        mViewModel.getOnEmptyWordEvent().observe(this, o ->
+                Toast.makeText(this, R.string.error_empty, Toast.LENGTH_SHORT).show());
     }
 
     @Override
@@ -68,7 +73,7 @@ public class PlayerActivity extends BaseActivity<ActivityPlayerBinding, PlayerVi
         mBinding.youtubePlayerView.play(Objects.requireNonNull(mViewModel.video.getVideoId()), new YouTubePlayerView.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(@NotNull YouTubePlayer.Provider provider, @NotNull YouTubePlayer youTubePlayer, boolean b) {
-                youTubePlayer.play();
+                youTubePlayer.loadVideo(mViewModel.video.getVideoId());
             }
 
             @Override

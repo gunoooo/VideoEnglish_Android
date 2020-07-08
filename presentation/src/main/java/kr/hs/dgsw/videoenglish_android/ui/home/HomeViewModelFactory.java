@@ -15,7 +15,7 @@ public class HomeViewModelFactory implements ViewModelProvider.Factory {
     private GetPlaylistListUseCase getPlaylistListUseCase;
 
     @Inject
-    HomeViewModelFactory(GetPlaylistListUseCase getPlaylistListUseCase) {
+    public HomeViewModelFactory(GetPlaylistListUseCase getPlaylistListUseCase) {
         this.getPlaylistListUseCase = getPlaylistListUseCase;
     }
 

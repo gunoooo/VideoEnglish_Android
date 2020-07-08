@@ -20,22 +20,22 @@ public class HomeViewModel extends BaseViewModel {
         setYoutubeDataList();
     }
 
-    List<YoutubeData> youtubeDataList = new ArrayList<>();
-    public VideoListAdapter videoListAdapter = new VideoListAdapter(youtubeDataList, VideoViewType.VERTICAL_NORMAL);
+    List<YoutubeData> videoList = new ArrayList<>();
+    public VideoListAdapter videoListAdapter = new VideoListAdapter(videoList, VideoViewType.VERTICAL_NORMAL);
 
     private void setYoutubeDataList() {
         addDisposable(getPlaylistListUseCase.buildUseCaseObservable(new GetPlaylistListUseCase.Params(Constants.HOME_PLAYLIST_ID)),
                 new DisposableSingleObserver<List<YoutubeData>>() {
                     @Override
                     public void onSuccess(List<YoutubeData> youtubeDataList) {
-                        HomeViewModel.this.youtubeDataList.clear();
-                        HomeViewModel.this.youtubeDataList.addAll(youtubeDataList);
+                        HomeViewModel.this.videoList.clear();
+                        HomeViewModel.this.videoList.addAll(youtubeDataList);
                         videoListAdapter.notifyDataSetChanged();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        getOnErrorEvent().setValue(e);
+                        setOnErrorEvent(e);
                     }
                 });
     }

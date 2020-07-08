@@ -7,18 +7,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.observers.DisposableCompletableObserver;
+import kr.hs.dgsw.domain.model.Word;
 import kr.hs.dgsw.domain.model.YoutubeData;
 import kr.hs.dgsw.domain.usecase.recent.InsertRecentUseCase;
+import kr.hs.dgsw.domain.usecase.word.InsertWordUseCase;
 import kr.hs.dgsw.videoenglish_android.base.viewmodel.BaseViewModel;
+import kr.hs.dgsw.videoenglish_android.widget.SingleLiveEvent;
 import kr.hs.dgsw.videoenglish_android.widget.recyclerview.video.VideoListAdapter;
 import kr.hs.dgsw.videoenglish_android.widget.recyclerview.video.VideoViewType;
 
 public class PlayerViewModel extends BaseViewModel {
 
     private InsertRecentUseCase insertRecentUseCase;
+    private InsertWordUseCase insertWordUseCase;
 
-    public PlayerViewModel(InsertRecentUseCase insertRecentUseCase) {
+    public PlayerViewModel(InsertRecentUseCase insertRecentUseCase,
+                           InsertWordUseCase insertWordUseCase) {
         this.insertRecentUseCase = insertRecentUseCase;
+        this.insertWordUseCase = insertWordUseCase;
     }
 
     YoutubeData video;
@@ -26,9 +32,17 @@ public class PlayerViewModel extends BaseViewModel {
     private List<YoutubeData> videoList = new ArrayList<>();
     public VideoListAdapter videoListAdapter = new VideoListAdapter(videoList, VideoViewType.HORIZONTAL_NORMAL);
 
+    public MutableLiveData<String> english = new MutableLiveData<>();
+    public MutableLiveData<String> korean = new MutableLiveData<>();
+
     private MutableLiveData<String> title = new MutableLiveData<>();
     public LiveData<String> getTitle() {
         return title;
+    }
+
+    private SingleLiveEvent onEmptyWordEvent = new SingleLiveEvent();
+    public LiveData getOnEmptyWordEvent() {
+        return onEmptyWordEvent;
     }
 
     void setVideo(YoutubeData video) {
@@ -50,7 +64,29 @@ public class PlayerViewModel extends BaseViewModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        getOnErrorEvent().setValue(e);
+                        setOnErrorEvent(e);
+                    }
+                });
+    }
+
+    public void onClickAddWord() {
+        boolean isEmptyEnglish = english.getValue() == null || english.getValue().isEmpty();
+        boolean isEmptyKorean = korean.getValue() == null || korean.getValue().isEmpty();
+        if (isEmptyEnglish || isEmptyKorean) {
+            onEmptyWordEvent.call();
+            return;
+        }
+        addDisposable(insertWordUseCase.buildUseCaseObservable(new InsertWordUseCase.Params(new Word(english.getValue(), korean.getValue()))),
+                new DisposableCompletableObserver() {
+                    @Override
+                    public void onComplete() {
+                        english.setValue("");
+                        korean.setValue("");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        setOnErrorEvent(e);
                     }
                 });
     }

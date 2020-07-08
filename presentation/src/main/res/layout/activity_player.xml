@@ -40,24 +40,26 @@
                     android:orientation="horizontal"
                     android:padding="10dp">
                     <EditText
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:hint="@string/hint_english"
                         android:textColorHint="@color/colorSoftGrey"
                         android:textColor="@color/colorWhite"
                         android:backgroundTint="@color/colorWhite"
-                        android:layout_marginEnd="5dp" />
+                        android:layout_marginEnd="5dp"
+                        android:text="@={viewModel.english}" />
 
                     <EditText
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:hint="@string/hint_korean"
                         android:textColorHint="@color/colorSoftGrey"
                         android:textColor="@color/colorWhite"
                         android:backgroundTint="@color/colorWhite"
-                        android:layout_marginStart="5dp" />
+                        android:layout_marginStart="5dp"
+                        android:text="@={viewModel.korean}" />
                 </LinearLayout>
 
                 <com.google.android.material.button.MaterialButton
@@ -67,6 +69,7 @@
                     android:backgroundTint="@color/colorGrey"
                     android:textSize="16sp"
                     android:text="@string/content_add_word"
+                    android:onClick="@{() -> viewModel.onClickAddWord()}"
                     android:layout_gravity="end"/>
 
                 <androidx.recyclerview.widget.RecyclerView

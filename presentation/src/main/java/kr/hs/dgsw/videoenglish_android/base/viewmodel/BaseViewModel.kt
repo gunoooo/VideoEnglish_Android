@@ -22,8 +22,16 @@ import kr.hs.dgsw.videoenglish_android.widget.SingleLiveEvent
 open class BaseViewModel : ViewModel() {
     private val disposable: CompositeDisposable = CompositeDisposable()
 
-    val isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
-    val onErrorEvent = SingleLiveEvent<Throwable>()
+    private val isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
+    fun getIsLoading(): LiveData<Boolean> = isLoading
+    fun setIsLoading(isLoading: Boolean) {
+        this.isLoading.value = isLoading
+    }
+    private val onErrorEvent = SingleLiveEvent<Throwable>()
+    fun getOnErrorEvent(): LiveData<Throwable> = onErrorEvent
+    fun setOnErrorEvent(e: Throwable) {
+        onErrorEvent.value = e
+    }
 
     fun addDisposable(single: Single<*>, observer: DisposableSingleObserver<*>) {
         disposable.add(single.subscribeOn(Schedulers.io())

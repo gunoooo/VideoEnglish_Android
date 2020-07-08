@@ -34,7 +34,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
                 startActivity(
                         new Intent(requireContext().getApplicationContext(), PlayerActivity.class)
                                 .putExtra(PlayerActivity.EXTRA_VIDEO, youtubeData)
-                                .putExtra(PlayerActivity.EXTRA_VIDEO_LIST, (Serializable) mViewModel.youtubeDataList)
+                                .putExtra(PlayerActivity.EXTRA_VIDEO_LIST, (Serializable) mViewModel.videoList)
                 )
         );
     }

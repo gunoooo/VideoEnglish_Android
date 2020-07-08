@@ -10,7 +10,7 @@ import kr.hs.dgsw.data.database.entity.*
 @Database(entities = [RecordEntity::class, HidingEntity::class,
     FavoritesItemEntity::class, RecentEntity::class, PlaylistEntity::class,
     SearchEntity::class, SearchHistoryEntity::class, SearchSettingEntity::class,
-    FavoritesEntity::class],
+    FavoritesEntity::class, WordEntity::class],
     version = 1, exportSchema = false
 )
 abstract class RoomDatabase : androidx.room.RoomDatabase() {
@@ -24,6 +24,7 @@ abstract class RoomDatabase : androidx.room.RoomDatabase() {
     abstract fun searchHistoryDao(): SearchHistoryDao
     abstract fun searchSettingDao(): SearchSettingDao
     abstract fun favoritesDao(): FavoritesDao
+    abstract fun wordDao(): WordDao
 
     companion object {
 

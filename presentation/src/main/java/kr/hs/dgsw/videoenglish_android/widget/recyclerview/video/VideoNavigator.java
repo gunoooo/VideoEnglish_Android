@@ -4,10 +4,10 @@ import kr.hs.dgsw.domain.model.YoutubeData;
 
 interface VideoNavigator {
     void onClickItem(YoutubeData youtubeData);
-    void addFavorites(YoutubeData youtubeData);
-    void deleteFavorites(YoutubeData youtubeData);
-    void hide(YoutubeData youtubeData);
-    void deleteHiding(YoutubeData youtubeData);
-    void openYoutube(YoutubeData youtubeData);
-    void share(YoutubeData youtubeData);
+    void onAddFavorites(YoutubeData youtubeData);
+    void onDeleteFavorites(YoutubeData youtubeData);
+    void onHide(YoutubeData youtubeData);
+    void onDeleteHiding(YoutubeData youtubeData);
+    void onOpenYoutube(YoutubeData youtubeData);
+    void onShare(YoutubeData youtubeData);
 }

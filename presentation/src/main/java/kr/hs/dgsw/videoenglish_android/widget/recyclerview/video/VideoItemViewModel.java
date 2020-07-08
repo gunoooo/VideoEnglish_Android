@@ -55,27 +55,27 @@ public class VideoItemViewModel extends BaseItemViewModel<VideoNavigator> {
         popup.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.menu_add_favorites: {
-                    getNavigator().addFavorites(youtubeData);
+                    getNavigator().onAddFavorites(youtubeData);
                     return true;
                 }
                 case R.id.menu_delete_favorites: {
-                    getNavigator().deleteFavorites(youtubeData);
+                    getNavigator().onDeleteFavorites(youtubeData);
                     return true;
                 }
                 case R.id.menu_hide: {
-                    getNavigator().hide(youtubeData);
+                    getNavigator().onHide(youtubeData);
                     return true;
                 }
                 case R.id.menu_delete_hiding: {
-                    getNavigator().deleteHiding(youtubeData);
+                    getNavigator().onDeleteHiding(youtubeData);
                     return true;
                 }
                 case R.id.menu_open_youtube: {
-                    getNavigator().openYoutube(youtubeData);
+                    getNavigator().onOpenYoutube(youtubeData);
                     return true;
                 }
                 case R.id.menu_share: {
-                    getNavigator().share(youtubeData);
+                    getNavigator().onShare(youtubeData);
                     return true;
                 }
                 default: return false;

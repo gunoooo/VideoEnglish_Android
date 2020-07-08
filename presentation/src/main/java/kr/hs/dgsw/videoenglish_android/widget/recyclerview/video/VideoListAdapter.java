@@ -36,7 +36,7 @@ public class VideoListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         return onAddFavoritesEvent;
     }
     @Override
-    public void addFavorites(YoutubeData youtubeData) {
+    public void onAddFavorites(YoutubeData youtubeData) {
         onAddFavoritesEvent.setValue(youtubeData);
     }
     private SingleLiveEvent<YoutubeData> onDeleteFavoritesEvent = new SingleLiveEvent<>();
@@ -44,7 +44,7 @@ public class VideoListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         return onDeleteFavoritesEvent;
     }
     @Override
-    public void deleteFavorites(YoutubeData youtubeData) {
+    public void onDeleteFavorites(YoutubeData youtubeData) {
         onDeleteFavoritesEvent.setValue(youtubeData);
     }
     private SingleLiveEvent<YoutubeData> onHideEvent = new SingleLiveEvent<>();
@@ -52,7 +52,7 @@ public class VideoListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         return onHideEvent;
     }
     @Override
-    public void hide(YoutubeData youtubeData) {
+    public void onHide(YoutubeData youtubeData) {
         onHideEvent.setValue(youtubeData);
     }
     private SingleLiveEvent<YoutubeData> onDeleteHidingEvent = new SingleLiveEvent<>();
@@ -60,7 +60,7 @@ public class VideoListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         return onDeleteHidingEvent;
     }
     @Override
-    public void deleteHiding(YoutubeData youtubeData) {
+    public void onDeleteHiding(YoutubeData youtubeData) {
         onDeleteHidingEvent.setValue(youtubeData);
     }
     private SingleLiveEvent<YoutubeData> onOpenYoutubeEvent = new SingleLiveEvent<>();
@@ -68,7 +68,7 @@ public class VideoListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         return onOpenYoutubeEvent;
     }
     @Override
-    public void openYoutube(YoutubeData youtubeData) {
+    public void onOpenYoutube(YoutubeData youtubeData) {
         onOpenYoutubeEvent.setValue(youtubeData);
     }
     private SingleLiveEvent<YoutubeData> onShareEvent = new SingleLiveEvent<>();
@@ -76,7 +76,7 @@ public class VideoListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         return onShareEvent;
     }
     @Override
-    public void share(YoutubeData youtubeData) {
+    public void onShare(YoutubeData youtubeData) {
         onShareEvent.setValue(youtubeData);
     }
 

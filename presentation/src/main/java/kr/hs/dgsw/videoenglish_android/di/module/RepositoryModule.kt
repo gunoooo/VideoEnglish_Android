@@ -8,7 +8,6 @@ import javax.inject.Singleton
 
 @Module
 class RepositoryModule {
-
     @Singleton
     @Provides
     fun provideSearchRepository(searchRepositoryImpl: SearchRepositoryImpl): SearchRepository = searchRepositoryImpl
@@ -40,4 +39,8 @@ class RepositoryModule {
     @Singleton
     @Provides
     fun provideSearchSettingRepository(searchSettingRepositoryImpl: SearchSettingRepositoryImpl): SearchSettingRepository = searchSettingRepositoryImpl
+
+    @Singleton
+    @Provides
+    fun provideWordRepository(wordRepositoryImpl: WordRepositoryImpl): WordRepository = wordRepositoryImpl
 }

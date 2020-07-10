@@ -21,7 +21,10 @@
     <string name="hint_search">검색어를 입력해주세요</string>
     <string name="hint_korean">의미</string>
     <string name="hint_english">영단어</string>
+    <string name="hint_title">제목</string>
+
     <string name="content_add_word">단어장에 추가</string>
+    <string name="content_check">확인</string>
 
     <string name="text_add_favorites_item">즐겨찾기 추가</string>
     <string name="text_add_favorites">즐겨찾기 목록 추가</string>
@@ -29,4 +32,5 @@
     <string name="text_favorites_list">즐겨찾기 목록</string>
     <string name="text_hide_list">차단 목록</string>
     <string name="text_recent">최근 기록</string>
+    <string name="text_check">확인</string>
 </resources>

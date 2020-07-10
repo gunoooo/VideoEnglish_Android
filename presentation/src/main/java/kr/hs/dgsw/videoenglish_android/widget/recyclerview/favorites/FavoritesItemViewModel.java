@@ -35,7 +35,8 @@ public class FavoritesItemViewModel extends BaseItemViewModel<FavoritesNavigator
     void bind(Favorites data) {
         this.favorites = data;
 
-        thumbnail.setValue(favorites.getFavoritesItemList() == null ? null : favorites.getFavoritesItemList().get(0).getThumbnailUrl());
+        thumbnail.setValue(favorites.getFavoritesItemList() == null || favorites.getFavoritesItemList().isEmpty()
+                ? null : favorites.getFavoritesItemList().get(0).getThumbnailUrl());
         title.setValue(favorites.getTitle());
         createDate.setValue(favorites.getCreateDate());
         videoCount.setValue("동영상 " + (favorites.getFavoritesItemList() == null ? 0 : favorites.getFavoritesItemList().size()) + "개");

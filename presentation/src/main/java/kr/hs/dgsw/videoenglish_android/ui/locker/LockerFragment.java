@@ -2,6 +2,8 @@ package kr.hs.dgsw.videoenglish_android.ui.locker;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import com.gunwoo.karaoke.singsangsung.ui.favorites.FavoritesAddDialog;
+
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
@@ -21,8 +23,15 @@ public class LockerFragment extends BaseFragment<FragmentLockerBinding, LockerVi
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     protected void observerViewModel() {
-
+        mViewModel.getOnOpenFavoritesAddViewEvent().observe(this, o1 -> {
+            FavoritesAddDialog favoritesAddDialog = new FavoritesAddDialog();
+            favoritesAddDialog.show(LockerFragment.this.getParentFragmentManager());
+            favoritesAddDialog.getOnSuccessInsertEvent().observe(this, o2 -> {
+                mViewModel.setFavoritesList();
+            });
+        });
     }
 
     @Override

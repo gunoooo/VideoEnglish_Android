@@ -35,18 +35,11 @@
                         android:layout_weight="1" />
 
                     <ImageView
-                        android:layout_width="25dp"
+                        android:layout_width="170dp"
                         android:layout_height="25dp"
-                        android:layout_marginEnd="15dp"
-                        android:src="@drawable/ic_search"
-                        android:tint="@color/colorWhite" />
-
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginEnd="15dp"
-                        android:src="@drawable/ic_settings"
-                        android:tint="@color/colorWhite" />
+                        android:src="@drawable/ic_youtube_logo"
+                        android:tint="@color/colorWhite"
+                        android:layout_marginEnd="15dp" />
                 </LinearLayout>
             </com.google.android.material.appbar.MaterialToolbar>
         </com.google.android.material.appbar.AppBarLayout>

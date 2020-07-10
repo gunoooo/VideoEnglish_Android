@@ -66,7 +66,7 @@ fun setMutableImageDrawable(view: ImageView, resid: LiveData<Int>?) {
     }
     else {
         Glide.with(view.context)
-            .load(R.color.colorLightGrey)
+            .load(R.color.colorGrey)
             .into(view)
     }
 }
@@ -78,12 +78,12 @@ fun setMutableImageUrl(view: ImageView, url: LiveData<String>?) {
     if(url != null) {
         url.observe(parentActivity, Observer { value -> Glide.with(view.context)
             .load(value)
-            .error(R.color.colorLightGrey)
+            .error(R.color.colorGrey)
             .into(view)})
     }
     else {
         Glide.with(view.context)
-            .load(R.color.colorLightGrey)
+            .load(R.color.colorGrey)
             .into(view)
     }
 }
@@ -95,12 +95,12 @@ fun setMutableImageUri(view: ImageView, uri: LiveData<Uri>?) {
     if(uri != null) {
         uri.observe(parentActivity, Observer { value -> Glide.with(view.context)
             .load(value)
-            .error(R.color.colorLightGrey)
+            .error(R.color.colorGrey)
             .into(view)})
     }
     else {
         Glide.with(view.context)
-            .load(R.color.colorLightGrey)
+            .load(R.color.colorGrey)
             .into(view)
     }
 }

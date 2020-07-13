@@ -84,7 +84,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
     public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mViewModel.setYoutubeDataList();
-        mBinding.swipeRefreshLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        mBinding.swipeRefreshLayout.setProgressBackgroundColorSchemeColor(getResources().getColor(R.color.colorPrimary));
         mBinding.swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
         mBinding.swipeRefreshLayout.setOnRefreshListener(this);
     }

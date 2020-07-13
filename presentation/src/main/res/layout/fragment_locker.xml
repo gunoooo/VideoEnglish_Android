@@ -42,14 +42,6 @@
                         android:textColor="@color/colorWhite"
                         android:fontFamily="@font/nanum_square_round"
                         android:text="@string/text_recent"/>
-
-                    <ImageView
-                        android:layout_width="23dp"
-                        android:layout_height="23dp"
-                        android:layout_marginStart="7dp"
-                        android:layout_gravity="center"
-                        android:tint="@color/colorWhite"
-                        android:src="@drawable/ic_chevron"/>
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView

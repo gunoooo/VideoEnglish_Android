@@ -1,6 +1,6 @@
 package kr.hs.dgsw.videoenglish_android.di.module;
 
-import com.gunwoo.karaoke.singsangsung.ui.favorites.FavoritesAddDialog;
+import kr.hs.dgsw.videoenglish_android.ui.favorites.FavoritesAddDialog;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;

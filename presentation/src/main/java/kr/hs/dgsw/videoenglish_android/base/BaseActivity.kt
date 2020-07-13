@@ -1,17 +1,17 @@
 package kr.hs.dgsw.videoenglish_android.base
 
-import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Build.VERSION
 import android.os.Build.VERSION_CODES
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import dagger.android.support.DaggerAppCompatActivity
 import kr.hs.dgsw.videoenglish_android.BR
 import kr.hs.dgsw.videoenglish_android.R
 import kr.hs.dgsw.videoenglish_android.base.viewmodel.BaseViewModel
-import dagger.android.support.DaggerAppCompatActivity
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 import java.util.*
@@ -47,6 +47,14 @@ abstract class BaseActivity<VB : ViewDataBinding, VM: BaseViewModel> : DaggerApp
     override fun onDestroy() {
         super.onDestroy()
         if(::mBinding.isInitialized) mBinding.unbind()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun setRequestedOrientation(requestedOrientation: Int) {

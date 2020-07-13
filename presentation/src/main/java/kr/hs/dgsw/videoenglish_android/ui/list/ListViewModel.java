@@ -1,4 +1,4 @@
-package kr.hs.dgsw.videoenglish_android.ui.home;
+package kr.hs.dgsw.videoenglish_android.ui.list;
 
 import androidx.lifecycle.LiveData;
 
@@ -6,51 +6,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.observers.DisposableCompletableObserver;
-import io.reactivex.observers.DisposableSingleObserver;
-import kr.hs.dgsw.data.util.Constants;
 import kr.hs.dgsw.domain.model.YoutubeData;
 import kr.hs.dgsw.domain.usecase.hiding.InsertHidingUseCase;
-import kr.hs.dgsw.domain.usecase.playlist.GetDefaultPlaylistListUseCase;
-import kr.hs.dgsw.domain.usecase.playlist.GetPlaylistListUseCase;
 import kr.hs.dgsw.videoenglish_android.base.viewmodel.BaseViewModel;
 import kr.hs.dgsw.videoenglish_android.widget.SingleLiveEvent;
 import kr.hs.dgsw.videoenglish_android.widget.recyclerview.video.VideoListAdapter;
 import kr.hs.dgsw.videoenglish_android.widget.recyclerview.video.VideoViewType;
 
-public class HomeViewModel extends BaseViewModel {
+public class ListViewModel extends BaseViewModel {
 
-    private GetDefaultPlaylistListUseCase getDefaultPlaylistListUseCase;
     private InsertHidingUseCase insertHidingUseCase;
 
-    public HomeViewModel(GetDefaultPlaylistListUseCase getDefaultPlaylistListUseCase,
-                         InsertHidingUseCase insertHidingUseCase) {
-        this.getDefaultPlaylistListUseCase = getDefaultPlaylistListUseCase;
+    public ListViewModel(InsertHidingUseCase insertHidingUseCase) {
         this.insertHidingUseCase = insertHidingUseCase;
     }
 
-    List<YoutubeData> videoList = new ArrayList<>();
-    public VideoListAdapter videoListAdapter = new VideoListAdapter(videoList, VideoViewType.VERTICAL_NORMAL);
+    private List<YoutubeData> videoList = new ArrayList<>();
+    public VideoListAdapter videoListAdapter = new VideoListAdapter(videoList, VideoViewType.HORIZONTAL_FAVORITES);
 
     private SingleLiveEvent onSuccessHidingEvent = new SingleLiveEvent<>();
     LiveData getOnSuccessHidingEvent() {
         return onSuccessHidingEvent;
     }
 
-    void setYoutubeDataList() {
-        addDisposable(getDefaultPlaylistListUseCase.buildUseCaseObservable(),
-                new DisposableSingleObserver<List<YoutubeData>>() {
-                    @Override
-                    public void onSuccess(List<YoutubeData> youtubeDataList) {
-                        HomeViewModel.this.videoList.clear();
-                        HomeViewModel.this.videoList.addAll(youtubeDataList);
-                        videoListAdapter.notifyDataSetChanged();
-                    }
+    void setVideoList(List<YoutubeData> videoList) {
+        this.videoList.clear();
+        this.videoList.addAll(videoList);
+        videoListAdapter.notifyDataSetChanged();
+    }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        setOnErrorEvent(e);
-                    }
-                });
+    List<YoutubeData> getVideoList() {
+        return videoList;
     }
 
     void insertHiding(YoutubeData video) {

@@ -9,6 +9,7 @@ import java.util.List;
 import io.reactivex.observers.DisposableCompletableObserver;
 import kr.hs.dgsw.domain.model.Word;
 import kr.hs.dgsw.domain.model.YoutubeData;
+import kr.hs.dgsw.domain.usecase.hiding.InsertHidingUseCase;
 import kr.hs.dgsw.domain.usecase.recent.InsertRecentUseCase;
 import kr.hs.dgsw.domain.usecase.word.InsertWordUseCase;
 import kr.hs.dgsw.videoenglish_android.base.viewmodel.BaseViewModel;
@@ -20,11 +21,14 @@ public class PlayerViewModel extends BaseViewModel {
 
     private InsertRecentUseCase insertRecentUseCase;
     private InsertWordUseCase insertWordUseCase;
+    private InsertHidingUseCase insertHidingUseCase;
 
     public PlayerViewModel(InsertRecentUseCase insertRecentUseCase,
-                           InsertWordUseCase insertWordUseCase) {
+                           InsertWordUseCase insertWordUseCase,
+                           InsertHidingUseCase insertHidingUseCase) {
         this.insertRecentUseCase = insertRecentUseCase;
         this.insertWordUseCase = insertWordUseCase;
+        this.insertHidingUseCase = insertHidingUseCase;
     }
 
     YoutubeData video;
@@ -44,6 +48,10 @@ public class PlayerViewModel extends BaseViewModel {
     public LiveData getOnEmptyWordEvent() {
         return onEmptyWordEvent;
     }
+    private SingleLiveEvent onSuccessHidingEvent = new SingleLiveEvent<>();
+    LiveData getOnSuccessHidingEvent() {
+        return onSuccessHidingEvent;
+    }
 
     void setVideo(YoutubeData video) {
         this.video = video;
@@ -56,11 +64,33 @@ public class PlayerViewModel extends BaseViewModel {
         videoListAdapter.notifyDataSetChanged();
     }
 
+    List<YoutubeData> getVideoList() {
+        return videoList;
+    }
+
     void insertResent() {
         addDisposable(insertRecentUseCase.buildUseCaseObservable(new InsertRecentUseCase.Params(video)),
                 new DisposableCompletableObserver() {
                     @Override
                     public void onComplete() { }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        setOnErrorEvent(e);
+                    }
+                });
+    }
+
+    void insertHiding(YoutubeData video) {
+        addDisposable(insertHidingUseCase.buildUseCaseObservable(new InsertHidingUseCase.Params(video)),
+                new DisposableCompletableObserver() {
+                    @Override
+                    public void onComplete() {
+                        int position = videoList.indexOf(video);
+                        videoList.remove(video);
+                        videoListAdapter.notifyItemRemoved(position);
+                        onSuccessHidingEvent.call();
+                    }
 
                     @Override
                     public void onError(Throwable e) {

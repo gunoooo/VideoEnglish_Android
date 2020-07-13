@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.gunwoo.karaoke.singsangsung.ui.favorites.FavoritesAddDialog
 import kr.hs.dgsw.domain.model.YoutubeData
 import kr.hs.dgsw.videoenglish_android.base.dialog.BaseBottomSheetDialog
 import kr.hs.dgsw.videoenglish_android.databinding.DialogFavoritesBottomSheetBinding

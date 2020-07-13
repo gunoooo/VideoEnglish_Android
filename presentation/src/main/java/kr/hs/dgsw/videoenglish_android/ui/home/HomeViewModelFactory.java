@@ -8,15 +8,20 @@ import java.lang.reflect.InvocationTargetException;
 
 import javax.inject.Inject;
 
+import kr.hs.dgsw.domain.usecase.hiding.InsertHidingUseCase;
+import kr.hs.dgsw.domain.usecase.playlist.GetDefaultPlaylistListUseCase;
 import kr.hs.dgsw.domain.usecase.playlist.GetPlaylistListUseCase;
 
 public class HomeViewModelFactory implements ViewModelProvider.Factory {
 
-    private GetPlaylistListUseCase getPlaylistListUseCase;
+    private GetDefaultPlaylistListUseCase getDefaultPlaylistListUseCase;
+    private InsertHidingUseCase insertHidingUseCase;
 
     @Inject
-    public HomeViewModelFactory(GetPlaylistListUseCase getPlaylistListUseCase) {
-        this.getPlaylistListUseCase = getPlaylistListUseCase;
+    public HomeViewModelFactory(GetDefaultPlaylistListUseCase getDefaultPlaylistListUseCase,
+                                InsertHidingUseCase insertHidingUseCase) {
+        this.getDefaultPlaylistListUseCase = getDefaultPlaylistListUseCase;
+        this.insertHidingUseCase = insertHidingUseCase;
     }
 
     @NonNull
@@ -24,9 +29,11 @@ public class HomeViewModelFactory implements ViewModelProvider.Factory {
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         try {
             return modelClass.getConstructor(
-                    GetPlaylistListUseCase.class
+                    GetDefaultPlaylistListUseCase.class,
+                    InsertHidingUseCase.class
             ). newInstance(
-                    getPlaylistListUseCase
+                    getDefaultPlaylistListUseCase,
+                    insertHidingUseCase
             );
         } catch (IllegalAccessException | InstantiationException | InvocationTargetException | NoSuchMethodException e) {
             throw new RuntimeException(e.getMessage());

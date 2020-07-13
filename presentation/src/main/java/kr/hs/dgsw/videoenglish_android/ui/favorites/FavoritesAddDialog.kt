@@ -1,4 +1,4 @@
-package com.gunwoo.karaoke.singsangsung.ui.favorites
+package kr.hs.dgsw.videoenglish_android.ui.favorites
 
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -6,8 +6,6 @@ import androidx.lifecycle.ViewModelProvider
 import kr.hs.dgsw.videoenglish_android.R
 import kr.hs.dgsw.videoenglish_android.base.dialog.BaseDialog
 import kr.hs.dgsw.videoenglish_android.databinding.DialogFavoritesAddBinding
-import kr.hs.dgsw.videoenglish_android.ui.favorites.FavoritesAddViewModel
-import kr.hs.dgsw.videoenglish_android.ui.favorites.FavoritesAddViewModelFactory
 import kr.hs.dgsw.videoenglish_android.widget.SingleLiveEvent
 import javax.inject.Inject
 

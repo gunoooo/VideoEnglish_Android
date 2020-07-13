@@ -1,5 +1,7 @@
 package kr.hs.dgsw.videoenglish_android.widget.recyclerview.video;
 
+import android.content.Context;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
@@ -44,7 +46,8 @@ public class VideoItemViewModel extends BaseItemViewModel<VideoNavigator> {
 
     public void onClickMenu(View view) {
         LinearLayout menuButton = (LinearLayout) view;
-        PopupMenu popup = new PopupMenu(view.getContext(), menuButton);
+        Context wrapper = new ContextThemeWrapper(view.getContext(), R.style.PopupMenu);
+        PopupMenu popup = new PopupMenu(wrapper, menuButton);
         if (youtubeData.isHiding())
             popup.inflate(R.menu.menu_hiding_video_item);
         else if (videoViewType == VideoViewType.HORIZONTAL_FAVORITES ||

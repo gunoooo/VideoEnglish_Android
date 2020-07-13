@@ -59,6 +59,7 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:$rootProject.recyclerViewVersion"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
     implementation "androidx.media:media:$rootProject.mediaVersion"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$rootProject.swiperefreshlayoutVersion"
     implementation "com.mikhaellopez:circularimageview:$rootProject.circularimageviewVersion"
     implementation "androidx.viewpager2:viewpager2:$rootProject.viewpager2Version"
 

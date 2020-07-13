@@ -1,5 +1,7 @@
 package kr.hs.dgsw.videoenglish_android.widget.recyclerview.favorites;
 
+import android.content.Context;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
@@ -48,7 +50,8 @@ public class FavoritesItemViewModel extends BaseItemViewModel<FavoritesNavigator
 
     public void onClickMenu(View view) {
         LinearLayout menuButton = (LinearLayout) view;
-        PopupMenu popup = new PopupMenu(view.getContext(), menuButton);
+        Context wrapper = new ContextThemeWrapper(view.getContext(), R.style.PopupMenu);
+        PopupMenu popup = new PopupMenu(wrapper, menuButton);
         popup.inflate(R.menu.menu_favorites_item);
         popup.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
